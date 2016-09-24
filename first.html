@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>元素</title>
+	<link rel="stylesheet" href="">
+	<style>
+		.demo{
+			width:150px;
+			height: 150px;
+			background-color: red;
+			position: absolute;
+		}
+		html,body {
+			margin:0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+			}	
+		/* body:hover div {
+			-webkit-transform: translateX(500px);
+			-ms-transform: translateX(500px);
+			-o-transform: translateX(500px);
+			transform: translateX(500px);
+			-webkit-transition: all 5s;
+			-o-transition: all 5s;
+			transition: all 5s;
+		} */
+
+		@keyframes turn {
+			from {background:red;}
+			to {background:green;}
+		} 
+		@-webkit-keyframes turn {
+			from {background:red;}
+			to {background:green;}
+		} 
+		@-ms-keyframes turn {
+			from {background:red;}
+			to {background:green;}
+		} 
+		@-moz-keyframes turn {
+			from {background:red;}
+			to {background:green;}
+		} 
+
+		.demo:hover {
+			-webkit-animation: turn 3s;
+			-o-animation: turn 3s;
+			animation: turn 3s;
+		}
+		
+		.big {
+			width:200px;
+			height: 200px;
+			background-color: red;
+			position: absolute;
+			/*
+				animation：规则名称 动画事件 动画曲线 动画延迟 动画次数(无限) 动画是否逆向执行 
+				animation-fill-mode:动画结束的位置 none执行完成回到起始位置 | forwards 在结束的位置停止;
+			*/
+			-webkit-animation: squrt 2s linear 2s infinite alternate;
+			-o-animation: squrt 2s linear 2s infinite alternate;
+			animation: squrt 2s linear 2s infinite alternate;
+		}
+		@-webkit-keyframes squrt{
+			0% {top:0; left:0; background-color: red;}
+			25%{top:0; left:300px; background-color: green;}
+			50%{top:300px;left:300px;background-color: blue;}
+			75%{top:300px;left:0;background-color: yellow;}
+			100% {top:0;left:0;background-color: pink;}
+		}
+		@-ms-keyframes squrt{
+			0% {top:0; left:0; background-color: red;}
+			25%{top:0; left:300px; background-color: green;}
+			50%{top:300px;left:300px;background-color: blue;}
+			75%{top:300px;left:0;background-color: yellow;}
+			100% {top:0;left:0;background-color: pink;}
+		}
+		@-moz-keyframes squrt{
+			0% {top:0; left:0; background-color: red;}
+			25%{top:0; left:300px; background-color: green;}
+			50%{top:300px;left:300px;background-color: blue;}
+			75%{top:300px;left:0;background-color: yellow;}
+			100% {top:0;left:0;background-color: pink;}
+		}
+		@keyframes squrt{
+			0% {top:0; left:0; background-color: red;}
+			25%{top:0; left:300px; background-color: green;}
+			50%{top:300px;left:300px;background-color: blue;}
+			75%{top:300px;left:0;background-color: yellow;}
+			100% {top:0;left:0;background-color: pink;}
+		}
+	</style>
+</head> 
+<body>
+	
+
+	<div class='big'></div>
+
+	<!-- <div class='demo'></div> -->
+</body>
+</html>

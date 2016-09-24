@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <title>注册</title>
+    <link rel="stylesheet" href="../css/userLogin.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script>
+        window.onload=function(){
+            var fontSize = parseInt(document.documentElement.clientWidth);
+            s = fontSize+"px";
+            $("html").css("fontSize",s);
+
+
+//            $(".buttonAgree").validate({
+//                submitHandler: function() {
+//                    $.post(
+//                            "http://datainfo.duapp.com/shopdata/userinfo.php", {
+//                                userID: $('#name').val(),
+//                                password: $('#pass').val()
+//                            },
+//                            function(e) {
+////                                if(e.code == 1) {
+////                                    alert('注册成功,跳转到登录页面');
+////                                } else {
+////                                    alert('您输入的信息有误,请核对信息重新输入');
+////                                }
+//
+//                                console.log(e)
+//                            })
+//                },
+//                rules: {
+//                    name: {
+//                        required: true,
+//                        rangelength: [6, 16]
+//                    },
+//                    pass: {
+//                        required: true,
+//                        rangelength: [6, 16]
+//                    },
+//                    repass: {
+//
+//                        equalTo: "#pass"
+//                    }
+//                },
+//                messages: {
+//                    name: {
+//                        required: "用户名不能为空",
+//                        rangelength: '6-20位字符，支持字母或字母与数字组合'
+//                    },
+//                    pass: {
+//                        required: "密码不能为空",
+//                        rangelength: '6-20位字符，建议使用字母、符号和数字组合'
+//                    },
+//                    repass: {
+//                        equalTo: "两次密码输入不一致"
+//                    }
+//
+//                }
+//
+//            })
+
+            $('#name').blur(function() {
+                var val = $(this).val();
+                if(val=='') {
+                    $("span").html('提示：用户名不能为空');
+                } else if(val.length<6||val.length>16 ) {
+                    $("span").html('提示：用户名长度为6-16位');
+                } else {
+                    $("span").html("");
+                }
+            })
+            //验证密码 非空 长度6~16位
+            $('#pass').blur(function() {
+                var val = $(this).val();
+                if(val=='') {
+                    $("span").html('提示：密码不能为空');
+                } else if(val.length<6||val.length>16 ) {
+                    $("span").html('提示：密码长度为6-16位');
+                } else {
+                    $("span").html("");
+                }
+            })
+
+            $('#repass').blur(function() {
+                var val = $(this).val();
+                if(val==$('#pass').val()) {
+                    $("span").html("");
+                }else {
+                    $("span").html('提示：两次密码输入不一致');
+                }
+            })
+
+            //点击登录按钮
+            $('.buttonAgree').click(function() {
+
+                //主动触发事件函数 进行验证
+                $('#name,#pass').trigger('blur');
+                //验证
+                if($('.error:visible').length==0) {
+                    //错误提示全部隐藏 ,验证成功
+                    //调用ajax与后台进行数据交互
+
+                    $.ajax({
+                        type:"get",
+                        url:'http://datainfo.duapp.com/shopdata/userinfo.php',
+                        data:{
+                            status:"register",
+                            userID:$('#name').val(),
+                            password:$('#pass').val()
+                            },
+                        success:function(e){
+                            console.info(e);
+                            if(e==0) {
+                                alert("恭喜账号已经被注册")
+                            } else if(e==1){
+                                alert('用户注册成功');
+
+                            }else {
+                                alert('用户注册失败');
+                            }
+                        }
+                    })
+                }
+            })
+
+
+        }
+    </script>
+</head>
+<body style="background: #F7F7F7">
+<header>
+    <a href="../index.html" class="iconfont " id="userLoginBack">&#xe600;返回</a>
+    注册
+    <a href='#' class='button'>登录</a>
+</header>
+    <div class="userLogin-box">
+        <input id="name" type="text" placeholder="请输入账号" >
+        <input id="pass" type="password" placeholder="输入密码">
+        <input id="repass" type="password" placeholder="重复密码">
+        <a href='#' class='buttonAgree'>同意服务协议并注册</a>
+
+    </div>
+        <span></span>
+
+<footer>
+    <a href="../index.html" style="text-decoration: none;color: #FFFFFF"><dl><dd class="iconfont">&#xe603;</dd><dt>首页</dt></dl></a>
+    <a href="shopDetail.html" style="text-decoration: none;color: #FFFFFF"><dl><dd class="iconfont">&#xe651;</dd><dt>分类</dt></dl></a>
+    <a href="shopCar.html" style="text-decoration: none;color: #FFFFFF"><dl><dd class="iconfont">&#xe652;</dd><dt>购物车</dt></dl></a>
+    <a href="userLogin.html" style="text-decoration: none;color: #FFFFFF"><dl><dd class="iconfont">&#xe621;</dd><dt>我的秀</dt></dl></a>
+    <a href="login.html" style="text-decoration: none;color: #FFFFFF"><dl><dd class="iconfont">...</dd><dt>更多</dt></dl></a>
+</footer>
+<script src="../js/jquery-1.12.4.min.js"></script>
+<script src="../js/jquery.validate.js"> </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+$basePx:640;
+@function px($px) {
+  @return  $px/$basePx+rem;
+}
+
+html,body{
+  height:100%;
+  width:100%;
+}
+
+header{
+  background: #E4366B;
+  position: absolute;
+  top:0;
+  height:px(86);
+  width:100%;
+  color: #fff;
+  text-align: center;
+  line-height: px(86);
+  font-size: 24px;
+  i{
+    position: absolute;
+    top:px(20);
+    right:px(20);
+    box-shadow: 2px 2px 5px #bbb;
+    float: right;
+    width: px(118);
+    height:px(56);
+    line-height: px(46);
+    display: block;
+    background:#DF265F;
+
+    border-radius: 20px;
+  }
+}
+
+.swiper-container {
+  position: absolute;
+  height:83%;
+  width: 100%;
+  top:px(86);
+  overflow: hidden;
+
+  dispaly:box;
+  display:-webkit-box;
+  display:-moz-box;
+  .swiper-wrapper{
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-box-flex: 1;
+    box-flex: 1;
+  }
+
+}
+//商品详情页的CSS····开始
+#footer-nav{
+
+  position: absolute;
+  bottom:0;
+  background:#484850;
+  width:100%;
+  height:px(96);
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+  z-index: 2;
+
+  dispaly:box;
+  display:-webkit-box;
+  display:-moz-box;
+
+  .footer-nav-l{
+    line-height: px(96);
+    font-size: 20px;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-box-flex: 1;
+    box-flex: 1;
+    width:0;
+    &:hover{
+      border-top: 3px solid #E43669;
+    }
+  }
+  .footer-nav-c{
+    line-height: px(96);
+    font-size: 20px;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-box-flex: 1;
+    box-flex: 1;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    width:0;
+    &:hover{
+      border-top: 3px solid #E43669;
+    }
+  }
+  .footer-nav-r{
+    line-height: px(96);
+    font-size: 20px;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-box-flex: 1;
+    box-flex: 1;
+    width:0;
+    &:hover{
+      border-top: 3px solid #E43669;
+    }
+  }
+}
+//商品详情页的CSS·······结束
+
+
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
+}
+//底部·······
+@font-face {font-family: "iconfont";
+  src: url('../css/font2/iconfont.eot?t=1474123916'); /* IE9*/
+  src: url('../css/font2/iconfont.eot?t=1474123916#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../css/font2/iconfont.woff?t=1474123916') format('woff'), /* chrome, firefox */
+  url('../css/font2/iconfont.ttf?t=1474123916') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../css/font2/iconfont.svg?t=1474123916#iconfont') format('svg'); /* iOS 4.1- */
+}
+//`````````````````````````````````````````````````````````````````````
+@media screen and (min-width:320px){
+  body{
+    font-size:16px;
+  }
+}
+
+@media screen and (min-width:480px) {
+  body{
+    font-size:24px;
+
+  }
+}
+@media screen and (min-height:567px) {
+  .swiper-container {
+    position: absolute;
+    height:85%;
+    width: 100%;
+    top:px(86);
+    overflow: hidden;
+  }
+}

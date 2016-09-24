@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <title>登录</title>
+    <link rel="stylesheet" href="../css/userLogin.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script>
+        window.onload=function(){
+            var fontSize = parseInt(document.documentElement.clientWidth);
+            s = fontSize+"px";
+            $("html").css("fontSize",s);
+
+            $('#name').blur(function() {
+                var val = $(this).val();
+                if(val=='') {
+                    $("span").html('提示：用户名不能为空');
+                } else if(val.length<6||val.length>16 ) {
+                    $("span").html('提示：用户名长度为6-16位');
+                } else {
+                    $("span").html("");
+                }
+            })
+            //验证密码 非空 长度6~16位
+            $('#pass').blur(function() {
+                var val = $(this).val();
+                if(val=='') {
+                    $("span").html('提示：密码不能为空');
+                } else if(val.length<6||val.length>16 ) {
+                    $("span").html('提示：密码长度为6-16位');
+                } else {
+                    $("span").html("");
+                }
+            })
+
+
+
+            //点击登录按钮
+            $('.buttonAgree').click(function() {
+
+                //主动触发事件函数 进行验证
+                $('#name,#pass').trigger('blur');
+                //验证
+                if($('.error:visible').length==0) {
+                    //错误提示全部隐藏 ,验证成功
+                    //调用ajax与后台进行数据交互
+
+                    $.ajax({
+                        type:"get",
+                        url:'http://datainfo.duapp.com/shopdata/userinfo.php',
+                        data:{userID:$('#name').val(),password:$('#pass').val(),status:"login"},
+                        success:function(d){
+                            console.log(d)
+                            if(d==0) {
+                                alert('用户名不存在');
+                            } else if(d==2) {
+                                alert('用户名密码不正确');
+
+                            }else{
+                                alert('登陆成功');
+                                console.log(json);
+                            }
+                        }
+                    })
+                }
+            })
+
+
+        }
+    </script>
+</head>
+<body style="background: #F7F7F7">
+<header>
+    <a href="../index.html" class="iconfont " id="userLoginBack">&#xe600;返回</a>
+    登录
+    <a href='#' class='button'>注册</a>
+</header>
+<div class="userLogin-box">
+    <input id="name" type="text" placeholder="请输入账号" >
+    <input id="pass" type="password" placeholder="输入密码">
+
+    <a href='#' class='buttonAgree'>登录</a>
+
+</div>
+<span></span>
+
+<footer>
+    <a href="../index.html" style="text-decoration: none;color: #FFFFFF"><dl><dd class="iconfont">&#xe603;</dd><dt>首页</dt></dl></a>
+    <a href="shopDetail.html" style="text-decoration: none;color: #FFFFFF"><dl><dd class="iconfont">&#xe651;</dd><dt>分类</dt></dl></a>
+    <a href="shopCar.html" style="text-decoration: none;color: #FFFFFF"><dl><dd class="iconfont">&#xe652;</dd><dt>购物车</dt></dl></a>
+    <a href="userLogin.html" style="text-decoration: none;color: #FFFFFF"><dl><dd class="iconfont">&#xe621;</dd><dt>我的秀</dt></dl></a>
+    <a href="login.html" style="text-decoration: none;color: #FFFFFF"><dl><dd class="iconfont">...</dd><dt>更多</dt></dl></a>
+</footer>
+<script src="../js/jquery-1.12.4.min.js"></script>
+<script src="../js/jquery.validate.js"> </script>
+</body>
+</html>

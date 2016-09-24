@@ -1,0 +1,19 @@
+{
+  "name": "yg",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "zepto": "^1.1.6",
+    "Swiper": "swiper#^3.3.1",
+    "iscroll": "4.2.5"
+  }
+}

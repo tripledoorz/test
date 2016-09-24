@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <title>商品详情页</title>
+    <link rel="stylesheet" href="../css/shopDetail.css">
+    <link rel="stylesheet" href="../js/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <script>
+        window.onload=function(){
+            var fontSize = parseInt(document.documentElement.clientWidth);
+            s = fontSize+"px";
+            $("html").css("fontSize",s);
+                console.log(s)
+            //············AJAX调轮播图·····························································
+            $.ajax({
+                url:"http://datainfo.duapp.com/shopdata/getGoods.php?callback=?",
+                dataType:"get",
+                success:function(e){
+                    for(var i =0 ; i< eval("("+e[3][6]+")").length;i++){
+                        var imgArr=  eval("("+e[3][6]+")");
+                        console.log(imgArr)
+                         console.log(e[i][6])
+                        var backImg="background:url('"+imgArr[i]+"');background-size:cover;";
+                        var slide = "<div class='swiper-slide'><div class='swiper-slide' style="+backImg+"></div></div>"
+                        var pagination="<div class='swiper-pagination'></div>"
+                        $(".swiper-wrapper").append(slide);
+                        $(".swiper-container").append(pagination);
+                    }
+                    var mySwiper = new Swiper ('.swiper-container', {
+                        loop: true,
+                        // 如果需要分页器
+                        pagination: '.swiper-pagination',
+
+                    })
+                    console.info(e)
+                }
+            })
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+    <header>商品详情<i class="iconfont">&#xe652;</i></header>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+        </div>
+    </div>
+
+
+
+
+    <footer id="footer-nav">
+        <div class="footer-nav-l">介绍</div>
+        <div class="footer-nav-c">详情</div>
+        <div class="footer-nav-r">实拍</div>
+    </footer>
+
+<script src="../js/zepto/zepto.min.js"></script>
+<script src="../js/swiper/js/swiper.jquery.min.js"></script>
+</body>
+</html>
